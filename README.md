@@ -61,12 +61,13 @@ To meet the project's demand for insightful aggregation on mental health factors
 Once familiar, I crafted the main query to group by stay and compute averages, as the project required summarizing trends rather than raw data. Averages were used because they provide a normalized view of central tendencies across varying group sizes, revealing patterns like increasing stress with longer stays without being skewed by outliers.
 Steps Followed:
 
-SELECT Clause: Chose stay for grouping, COUNT(*) to count records per stay length (to weigh group sizes), and ROUND(AVG(...),2) for averages of todep, tosc, and toas. Rounding to 2 decimals ensures clean, readable insights—vital for reporting mental health trends.Why? Project demands emphasized aggregation to spot correlations; COUNT adds context on sample reliability.
-FROM Clause: Specified public.students as the source table.Why? This defines the dataset foundation, building on my initial exploration.
-WHERE Clause: Filtered to Inter_dom = 'Inter' (international students only).Why? The project focused on international adaptation challenges, excluding domestic data to isolate relevant factors.
-GROUP BY Clause: Grouped by stay to aggregate metrics per duration.Why? Enables comparison across stay lengths, directly addressing the need to analyze time-based impacts.
-ORDER BY Clause: Sorted by stay DESC (longest to shortest).Why? Highlights potential progression (e.g., if stress worsens over time), making trends easier to interpret.
-LIMIT Clause: Restricted to 9 rows.Why? Focuses on top results for concise output, as per project efficiency requirements.
+**SELECT** Clause: Chose stay for grouping, COUNT(*) to count records per stay length (to weigh group sizes), and ROUND(AVG(...),2) for averages of todep, tosc, and toas. Rounding to 2 decimals ensures clean, readable insights—vital for reporting mental health trends.Why? Project demands emphasized aggregation to spot correlations; COUNT adds context on sample reliability.
+
+**FROM** Clause: Specified public.students as the source table.Why? This defines the dataset foundation, building on my initial exploration.
+**WHERE** Clause: Filtered to Inter_dom = 'Inter' (international students only).Why? The project focused on international adaptation challenges, excluding domestic data to isolate relevant factors.
+**GROUP BY** Clause: Grouped by stay to aggregate metrics per duration.Why? Enables comparison across stay lengths, directly addressing the need to analyze time-based impacts.
+**ORDER BY** Clause: Sorted by stay DESC (longest to shortest).Why? Highlights potential progression (e.g., if stress worsens over time), making trends easier to interpret.
+**LIMIT** Clause: Restricted to 9 rows.Why? Focuses on top results for concise output, as per project efficiency requirements.
 
 Full Query:
 SQLSELECT stay, COUNT(*) AS count_int, ROUND(AVG(todep),2) AS average_phq, ROUND(AVG(tosc),2) AS average_scs, ROUND(AVG(toas),2) AS average_as
